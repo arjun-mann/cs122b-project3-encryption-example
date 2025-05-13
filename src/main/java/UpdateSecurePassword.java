@@ -40,8 +40,10 @@ public class UpdateSecurePassword {
 
         ResultSet rs = statement.executeQuery(query);
 
-        // we use the StrongPasswordEncryptor from jasypt library (Java Simplified Encryption) 
-        //  it internally use SHA-256 algorithm and 10,000 iterations to calculate the encrypted password
+        // we use the StrongPasswordEncryptor from jasypt library (Java Simplified
+        // Encryption)
+        // it internally use SHA-256 algorithm and 10,000 iterations to calculate the
+        // encrypted password
         PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
         ArrayList<String> updateQueryList = new ArrayList<>();
@@ -51,7 +53,7 @@ public class UpdateSecurePassword {
             // get the ID and plain text password from current table
             String id = rs.getString("id");
             String password = rs.getString("password");
-            
+
             // encrypt the password using StrongPasswordEncryptor
             String encryptedPassword = passwordEncryptor.encryptPassword(password);
 
